@@ -7,11 +7,6 @@ object Board {
         return 2.toBigInteger().pow(number-1)
     }
 
-    fun getTotalGrainCount(): BigInteger {
-        var total: BigInteger = BigInteger.ZERO
-        for (num in 1..64){
-            total += getGrainCountForSquare(num)
-        }
-        return total
-    }
+    fun getTotalGrainCount(): BigInteger = (1..64).map{getGrainCountForSquare(it)}.reduce { acc, bigInt -> acc + bigInt  }
+
 }
